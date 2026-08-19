@@ -10,17 +10,22 @@
 
     <style>
         :root {
-            --bg-main: #060e1a;          /* Deep Dark Navy Blue */
-            --bg-card: #0e1b2e;          /* Dark Blue Card */
-            --bg-input: #16263f;         /* Input Dark Blue */
-            --accent-blue: #38bdf8;       /* Bright Sky Blue Accent */
-            --accent-hover: #0284c7;      /* Hover Blue */
-            --text-white: #ffffff;        /* Pure White */
-            --text-muted: #cbd5e1;        /* Light Soft Gray-White */
-            --border-color: #1e3a5f;      /* Border Blue */
+            /* TEMA WARNA: BIRU GELAP & BIRU NAVY MODEN */
+            --bg-main: #0b1329;
+            --bg-card: #111c38;
+            --bg-input: #1a2747;
+
+            --navy-button: #0f244a;       /* Warna Butang Navy */
+            --navy-button-hover: #17356b;
+            --accent-bright-blue: #0088ff;
+            --accent-bright-hover: #0077e6;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #1e2d52;
+
             --radius-lg: 16px;
-            --radius-md: 12px;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            --radius-md: 8px;            /* Radius segi empat (bucu sikit sahaja) */
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -31,94 +36,121 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             background-color: var(--bg-main);
-            color: var(--text-white);
+            color: var(--text-light);
             line-height: 1.5;
-            padding-bottom: 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-wrapper {
+            flex: 1 0 auto;
         }
 
         .container {
-            max-width: 500px;
+            width: 100%;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 16px;
+            padding: 0 20px;
         }
 
-        /* NAVIGATION */
+        /* ===================================================
+           NAVIGATION BAR & RECTANGLE BUTTONS (8PX RADIUS)
+        ====================================================== */
         nav {
-            background: rgba(6, 14, 26, 0.95);
-            backdrop-filter: blur(10px);
+            background: #050b18;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 0;
+            padding: 14px 0;
+            border-bottom: 1px solid #162447;
         }
+
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
+        /* BUTANG 1: SISWAY UNICAR */
         .brand-logo-btn {
-            background: transparent;
-            border: none;
-            font-weight: 800;
-            font-size: 1.05rem;
-            color: var(--text-white);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-        .brand-logo-btn:hover {
-            background: var(--bg-card);
-            color: var(--accent-blue);
-        }
-        .nav-actions {
+            background: var(--navy-button);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: #ffffff !important;
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-        .car-badge-btn {
-            font-size: 0.75rem;
-            background: var(--bg-card);
-            color: var(--text-white);
-            padding: 5px 10px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .car-badge-btn:hover {
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
+            padding: 9px 16px;
+            border-radius: var(--radius-md); /* Bucu sikit ja (8px) */
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        /* LANGUAGE SWITCHER BUTTON */
-        .lang-btn {
-            background: var(--accent-blue);
-            color: #040914;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s;
+        .brand-logo-btn:hover {
+            background: var(--navy-button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 136, 255, 0.25);
         }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* BUTANG 2: PERODUA BEZZA */
+        .car-badge-btn {
+            font-size: 0.85rem;
+            background: var(--navy-button);
+            color: #ffffff !important;
+            padding: 9px 16px;
+            border-radius: var(--radius-md); /* Bucu sikit ja (8px) */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .car-badge-btn:hover {
+            background: var(--navy-button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 136, 255, 0.25);
+        }
+
+        /* BUTANG TUKAR BAHASA (MY BM) */
+        .lang-btn {
+            background: var(--navy-button);
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 9px 14px;
+            border-radius: var(--radius-md); /* Bucu sikit ja (8px) */
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
         .lang-btn:hover {
-            background: var(--accent-hover);
-            color: var(--text-white);
+            background: var(--accent-bright-blue);
+            transform: translateY(-2px);
         }
 
         /* PAGE SWITCHING SYSTEM */
         .page {
             display: none;
             animation: fadeIn 0.3s ease-in-out;
+            width: 100%;
         }
         .page.active {
             display: block;
@@ -131,40 +163,41 @@
         /* HERO & HEADINGS */
         .hero {
             text-align: center;
-            padding: 20px 0 16px;
+            padding: 24px 0 16px;
         }
         .hero h1 {
             font-size: 1.6rem;
             font-weight: 800;
             margin-bottom: 8px;
             line-height: 1.2;
-            color: var(--text-white);
+            color: #ffffff;
         }
         .hero p {
             color: var(--text-muted);
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             margin-bottom: 16px;
         }
         .welcome-box {
-            background: rgba(56, 189, 248, 0.08);
-            border: 1px solid var(--accent-blue);
-            border-radius: var(--radius-md);
-            padding: 24px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--accent-bright-blue);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
             margin-top: 24px;
             margin-bottom: 24px;
             text-align: center;
+            box-shadow: var(--shadow);
         }
         .welcome-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-            margin-bottom: 8px;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
         }
         .welcome-desc {
-            font-size: 0.88rem;
+            font-size: 0.92rem;
             color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 20px;
+            line-height: 1.6;
+            margin-bottom: 24px;
         }
 
         .section-title {
@@ -174,7 +207,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--text-white);
+            color: #ffffff;
         }
 
         /* BUTTONS */
@@ -196,21 +229,21 @@
             box-sizing: border-box;
         }
         .btn-primary {
-            background: var(--accent-blue);
-            color: #040914;
+            background: var(--accent-bright-blue);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(0, 136, 255, 0.4);
         }
         .btn-primary:hover {
-            background: var(--accent-hover);
-            color: var(--text-white);
+            background: var(--accent-bright-hover);
+            transform: translateY(-1px);
         }
         .btn-secondary {
             background: var(--bg-card);
-            color: var(--text-white);
+            color: #ffffff;
             border: 1px solid var(--border-color);
-            margin-top: 0;
         }
         .btn-secondary:hover {
-            background: #14243b;
+            background: #1a2747;
         }
         .btn-whatsapp {
             background: #25D366;
@@ -218,6 +251,7 @@
             font-size: 1.05rem;
             padding: 16px;
             margin-top: 16px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
         }
         .btn-whatsapp:hover {
             background: #1eb857;
@@ -231,18 +265,25 @@
             flex: 1;
         }
 
-        /* LOCATION CARDS */
+        /* LAYOUT GRID & CARDS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
         .location-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
             margin-top: 12px;
         }
+
         .location-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 16px;
+            padding: 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -251,7 +292,7 @@
             box-shadow: var(--shadow);
         }
         .location-card:hover {
-            border-color: var(--accent-blue);
+            border-color: var(--accent-bright-blue);
             transform: translateY(-2px);
         }
         .location-info {
@@ -265,24 +306,18 @@
         .location-title {
             font-weight: 700;
             font-size: 0.98rem;
-            color: var(--text-white);
+            color: #ffffff;
         }
         .location-sub {
             font-size: 0.78rem;
             color: var(--text-muted);
         }
 
-        /* CARDS & GRID */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 16px;
+            padding: 20px;
             box-shadow: var(--shadow);
             margin-bottom: 16px;
         }
@@ -296,8 +331,8 @@
         }
         .feature-title {
             font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--text-white);
+            font-size: 0.9rem;
+            color: #ffffff;
         }
 
         /* POPUP MODAL STYLES */
@@ -307,8 +342,8 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(4, 9, 20, 0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(6, 13, 30, 0.85);
+            backdrop-filter: blur(5px);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -320,65 +355,67 @@
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
             width: 100%;
-            max-width: 460px;
+            max-width: 500px;
             max-height: 85vh;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
             animation: modalPop 0.3s ease-out;
+            color: var(--text-light);
         }
         @keyframes modalPop {
-            from { transform: scale(0.9); opacity: 0; }
+            from { transform: scale(0.95); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
         .modal-header {
             padding: 16px 20px;
             border-bottom: 1px solid var(--border-color);
             text-align: center;
+            background: #0d162d;
+            border-top-left-radius: var(--radius-lg);
+            border-top-right-radius: var(--radius-lg);
         }
         .modal-header h3 {
             font-size: 1.15rem;
-            color: var(--text-white);
+            color: #ffffff;
         }
         .modal-body {
-            padding: 16px 20px;
+            padding: 20px;
             overflow-y: auto;
             flex-grow: 1;
         }
         .modal-footer {
             padding: 14px 20px;
             border-top: 1px solid var(--border-color);
-            background: rgba(6, 14, 26, 0.4);
+            background: #0d162d;
+            border-bottom-left-radius: var(--radius-lg);
+            border-bottom-right-radius: var(--radius-lg);
         }
 
         /* SPEC GRID */
-        .spec-grid {
+        .spec-grid, .spec-grid-2col {
             display: grid;
             grid-template-columns: 1fr;
             gap: 10px;
             margin-top: 10px;
         }
-        .spec-grid-2col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 10px;
-        }
+
         .spec-item {
-            background: var(--bg-input);
+            background: #162343;
             padding: 12px;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
         }
         .spec-label {
             font-size: 0.72rem;
             color: var(--text-muted);
             text-transform: uppercase;
+            font-weight: 600;
         }
         .spec-value {
             font-size: 0.92rem;
             font-weight: 700;
-            color: var(--text-white);
+            color: #ffffff;
             margin-top: 2px;
         }
 
@@ -398,42 +435,40 @@
             gap: 10px;
         }
         .terms-list li strong {
-            color: var(--text-white);
+            color: #ffffff;
         }
 
         /* FORM STYLING */
         .form-group {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
         .form-group label {
             display: block;
-            font-size: 0.82rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             margin-bottom: 6px;
-            color: var(--text-muted);
+            color: #ffffff;
         }
         .form-control {
             width: 100%;
-            padding: 14px;
+            padding: 12px 14px;
             background: var(--bg-input);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            color: var(--text-white);
+            color: #ffffff;
             font-size: 0.92rem;
             outline: none;
+            transition: all 0.2s;
         }
         .form-control:focus {
-            border-color: var(--accent-blue);
-        }
-        select.form-control option {
-            background: var(--bg-card);
-            color: var(--text-white);
+            border-color: var(--accent-bright-blue);
+            box-shadow: 0 0 0 3px rgba(0, 136, 255, 0.25);
         }
 
         /* FARE PREVIEW CARD */
         .fare-box {
-            background: rgba(56, 189, 248, 0.05);
-            border: 1px dashed var(--accent-blue);
+            background: #162343;
+            border: 1px dashed var(--accent-bright-blue);
             border-radius: var(--radius-md);
             padding: 16px;
             text-align: center;
@@ -442,24 +477,25 @@
         .fare-amount {
             font-size: 2rem;
             font-weight: 800;
-            color: var(--text-white);
+            color: var(--accent-bright-blue);
         }
         .fare-per-person {
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-top: 4px;
+            font-weight: 500;
         }
 
         /* RECEIPT BOX */
         .receipt-card {
-            border: 2px solid var(--accent-blue);
+            border-top: 5px solid var(--accent-bright-blue);
         }
         .receipt-row {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border-color);
-            font-size: 0.88rem;
+            font-size: 0.9rem;
         }
         .receipt-row:last-child {
             border-bottom: none;
@@ -468,487 +504,520 @@
             color: var(--text-muted);
         }
         .receipt-val {
-            font-weight: 600;
+            font-weight: 700;
             text-align: right;
-            color: var(--text-white);
+            color: #ffffff;
         }
 
         /* PRICING TABLE */
         .price-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
         }
         .price-table th, .price-table td {
-            padding: 10px;
+            padding: 12px 14px;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
-            color: var(--text-white);
+            color: #ffffff;
         }
         .price-table th {
-            color: var(--accent-blue);
+            color: #ffffff;
+            font-weight: 700;
+            background: #162343;
         }
 
+        /* FOOTER POSITIONED AT BOTTOM */
         footer {
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
-            margin-top: 30px;
-            padding-top: 20px;
+            padding: 24px 20px;
             border-top: 1px solid var(--border-color);
+            margin-top: auto;
+            background: #060d1e;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        /* MEDIA QUERIES */
+        @media (min-width: 640px) {
+            .grid-2 { grid-template-columns: repeat(2, 1fr); }
+            .location-grid { grid-template-columns: repeat(2, 1fr); }
+            .spec-grid-2col { grid-template-columns: repeat(2, 1fr); }
+            .hero-btns { max-width: 450px; margin: 0 auto; }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 { font-size: 2.2rem; }
+            .welcome-box { padding: 36px 30px; }
+            .welcome-title { font-size: 1.5rem; }
+            .welcome-desc { font-size: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+            .grid-2 { grid-template-columns: repeat(4, 1fr); }
+            .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- DRIVER INFO POPUP MODAL -->
-    <div id="driverInfoModal" class="modal-overlay" style="display: none;">
-        <div class="modal-box">
-            <div class="modal-header">
-                <h3 data-i18n="driverInfoTitle">🪪 Driver Information</h3>
-            </div>
-            <div class="modal-body">
-                <div style="text-align: center; margin-bottom: 16px;">
-                    <div style="font-size: 3rem; margin-bottom: 4px;">👨‍✈️</div>
-                    <div style="font-size: 1.1rem; font-weight: 800; color: var(--text-white);">Mr.Emon</div>
-                    <div style="font-size: 0.8rem; color: var(--accent-blue); font-weight: 600;" data-i18n="driverSubtitle">Verified Driver • Sisway UniCar</div>
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper">
+        <!-- DRIVER INFO POPUP MODAL -->
+        <div id="driverInfoModal" class="modal-overlay" style="display: none;">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3 data-i18n="driverInfoTitle">🪪 Driver Information</h3>
                 </div>
+                <div class="modal-body">
+                    <div style="text-align: center; margin-bottom: 16px;">
+                        <div style="font-size: 3rem; margin-bottom: 4px;">👨‍✈️</div>
+                        <div style="font-size: 1.1rem; font-weight: 800; color: #ffffff;">Mr.Emon</div>
+                        <div style="font-size: 0.8rem; color: var(--accent-bright-blue); font-weight: 700;" data-i18n="driverSubtitle">Verified Driver • Sisway UniCar</div>
+                    </div>
 
-                <div class="spec-grid">
-                    <div class="spec-item">
-                        <div class="spec-label" data-i18n="fullNameLabel">Full Name</div>
-                        <div class="spec-value">Mr.Emon</div>
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <div class="spec-label" data-i18n="fullNameLabel">Full Name</div>
+                            <div class="spec-value">Mr.Emon</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label" data-i18n="educationLabel">Education / Campus</div>
+                            <div class="spec-value" data-i18n="unimapStudent">Universiti Malaysia Perlis (UniMAP) Student</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label" data-i18n="licenseLabel">Driving License Class</div>
+                            <div class="spec-value" data-i18n="licenseValue">B2 / D (Active & Valid)</div>
+                        </div>
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-label" data-i18n="educationLabel">Education / Campus</div>
-                        <div class="spec-value" data-i18n="unimapStudent">Universiti Malaysia Perlis (UniMAP) Student</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label" data-i18n="licenseLabel">Driving License Class</div>
-                        <div class="spec-value" data-i18n="licenseValue">B2 / D (Active & Valid)</div>
-                    </div>
-                </div>
 
-                <div style="margin-top: 16px; background: rgba(56, 189, 248, 0.1); border-left: 3px solid var(--accent-blue); padding: 10px 12px; border-radius: 6px; font-size: 0.82rem; color: var(--text-muted);" data-i18n="safetyGuarantee">
-                    🛡️ <strong>Safety Guarantee:</strong> Safe, reliable, and campus-verified driver dedicated to student transit.
+                    <div style="margin-top: 16px; background: #162343; border-left: 4px solid var(--accent-bright-blue); padding: 10px 12px; border-radius: 6px; font-size: 0.82rem; color: var(--text-light);" data-i18n="safetyGuarantee">
+                        🛡️ <strong>Safety Guarantee:</strong> Safe, reliable, and campus-verified driver dedicated to student transit.
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" onclick="closeDriverModal()" data-i18n="closeInfo">Close Info</button>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="closeDriverModal()" data-i18n="closeInfo">Close Info</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- CAR INFO POPUP MODAL -->
-    <div id="carInfoModal" class="modal-overlay" style="display: none;">
-        <div class="modal-box">
-            <div class="modal-header">
-                <h3>🚘 Perodua Bezza 1.3 X</h3>
-            </div>
-            <div class="modal-body">
-                <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-bottom: 12px;" data-i18n="carModalSub">
-                    Vehicle Details & Ride Comfort Specs
-                </p>
+        <!-- CAR INFO POPUP MODAL -->
+        <div id="carInfoModal" class="modal-overlay" style="display: none;">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3>🚘 Perodua Bezza 1.3 X</h3>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-bottom: 12px;" data-i18n="carModalSub">
+                        Vehicle Details & Ride Comfort Specs
+                    </p>
 
-                <div class="spec-grid-2col">
-                    <div class="spec-item">
-                        <div class="spec-label" data-i18n="engineLabel">Engine</div>
-                        <div class="spec-value">1.3L Dual VVT-i</div>
+                    <div class="spec-grid-2col">
+                        <div class="spec-item">
+                            <div class="spec-label" data-i18n="engineLabel">Engine</div>
+                            <div class="spec-value">1.3L Dual VVT-i</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label" data-i18n="transLabel">Transmission</div>
+                            <div class="spec-value" data-i18n="transVal">Automatic (4-Speed)</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label" data-i18n="seatsLabel">Seating Capacity</div>
+                            <div class="spec-value" data-i18n="seatsVal">4 Passengers</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label" data-i18n="bootLabel">Boot Capacity</div>
+                            <div class="spec-value">508 Liters</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label" data-i18n="luggageLabel">Luggage Limit</div>
+                            <div class="spec-value" data-i18n="luggageVal">Max 2 Large Bags</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label" data-i18n="acLabel">Air Conditioning</div>
+                            <div class="spec-value" data-i18n="acVal">Powerful & Cool</div>
+                        </div>
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-label" data-i18n="transLabel">Transmission</div>
-                        <div class="spec-value" data-i18n="transVal">Automatic (4-Speed)</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label" data-i18n="seatsLabel">Seating Capacity</div>
-                        <div class="spec-value" data-i18n="seatsVal">4 Passengers</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label" data-i18n="bootLabel">Boot Capacity</div>
-                        <div class="spec-value">508 Liters</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label" data-i18n="luggageLabel">Luggage Limit</div>
-                        <div class="spec-value" data-i18n="luggageVal">Max 2 Large Bags</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label" data-i18n="acLabel">Air Conditioning</div>
-                        <div class="spec-value" data-i18n="acVal">Powerful & Cool</div>
+
+                    <div style="margin-top: 16px; background: #162343; border-left: 4px solid var(--accent-bright-blue); padding: 10px 12px; border-radius: 6px; font-size: 0.82rem; color: var(--text-light);" data-i18n="carFeatures">
+                        ✨ <strong>Features:</strong> Clean & sanitized interior, mobile phone charger available upon request, smooth highway cruiser.
                     </div>
                 </div>
-
-                <div style="margin-top: 16px; background: rgba(56, 189, 248, 0.1); border-left: 3px solid var(--accent-blue); padding: 10px 12px; border-radius: 6px; font-size: 0.82rem; color: var(--text-muted);" data-i18n="carFeatures">
-                    ✨ <strong>Features:</strong> Clean & sanitized interior, mobile phone charger available upon request, smooth highway cruiser.
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="closeCarModal()" data-i18n="closeInfo">Close Info</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" onclick="closeCarModal()" data-i18n="closeInfo">Close Info</button>
+        </div>
+
+        <!-- TERMS & CONDITIONS POPUP MODAL -->
+        <div id="termsModal" class="modal-overlay" style="display: none;">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3 data-i18n="termsTitle">📜 Terms & Conditions</h3>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size: 0.8rem; color: var(--accent-bright-blue); margin-bottom: 12px; text-align: center; font-weight: 700;" data-i18n="termsSub">
+                        Please read & understand the terms below before proceeding:
+                    </p>
+                    <ul class="terms-list">
+                        <li>
+                            <span>1.</span>
+                            <div data-i18n="termAdvance"><strong>Advance Booking Required:</strong> Please make your booking at least 1 day in advance to ensure driver availability and slot confirmation.</div>
+                        </li>
+                        <li>
+                            <span>2.</span>
+                            <div data-i18n="term1"><strong>Maximum Passengers:</strong> Limited to 4 passengers max. Exceeding this limit will result in cancellation subject to terms.</div>
+                        </li>
+                        <li>
+                            <span>3.</span>
+                            <div data-i18n="term2"><strong>Luggage Allowance:</strong> Maximum 2 luggage items (20–28 inch sizes).</div>
+                        </li>
+                        <li>
+                            <span>4.</span>
+                            <div data-i18n="term3"><strong>Strict Prohibitions:</strong> Alcohol, smoking, and vaping are strictly prohibited inside the vehicle. Violations lead to immediate cancellation with no refund.</div>
+                        </li>
+                        <li>
+                            <span>5.</span>
+                            <div data-i18n="term4"><strong>Cancellation Fee:</strong> Cancellations made by passengers are eligible for a 50% refund only.</div>
+                        </li>
+                        <li>
+                            <span>6.</span>
+                            <div data-i18n="term5"><strong>Punctuality:</strong> Passengers must be ready 10 minutes prior to pickup time. Drivers will not speed or rush to avoid safety hazards.</div>
+                        </li>
+                        <li>
+                            <span>7.</span>
+                            <div data-i18n="term6"><strong>Tolls & Parking:</strong> Toll fees and additional parking charges are fully borne by the passenger if applicable.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="acceptTermsAndProceed()" data-i18n="acceptTerms">I Understand & Agree</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- TERMS & CONDITIONS POPUP MODAL -->
-    <div id="termsModal" class="modal-overlay" style="display: none;">
-        <div class="modal-box">
-            <div class="modal-header">
-                <h3 data-i18n="termsTitle">📜 Terms & Conditions</h3>
-            </div>
-            <div class="modal-body">
-                <p style="font-size: 0.8rem; color: var(--accent-blue); margin-bottom: 12px; text-align: center; font-weight: 600;" data-i18n="termsSub">
-                    Please read & understand the terms below before proceeding:
-                </p>
-                <ul class="terms-list">
-                    <li>
-                        <span>1.</span>
-                        <div data-i18n="termAdvance"><strong>Advance Booking Required:</strong> Please make your booking at least 1 day in advance to ensure driver availability and slot confirmation.</div>
-                    </li>
-                    <li>
-                        <span>2.</span>
-                        <div data-i18n="term1"><strong>Maximum Passengers:</strong> Limited to 4 passengers max. Exceeding this limit will result in cancellation subject to terms.</div>
-                    </li>
-                    <li>
-                        <span>3.</span>
-                        <div data-i18n="term2"><strong>Luggage Allowance:</strong> Maximum 2 luggage items (20–28 inch sizes).</div>
-                    </li>
-                    <li>
-                        <span>4.</span>
-                        <div data-i18n="term3"><strong>Strict Prohibitions:</strong> Alcohol, smoking, and vaping are strictly prohibited inside the vehicle. Violations lead to immediate cancellation with no refund.</div>
-                    </li>
-                    <li>
-                        <span>5.</span>
-                        <div data-i18n="term4"><strong>Cancellation Fee:</strong> Cancellations made by passengers are eligible for a 50% refund only.</div>
-                    </li>
-                    <li>
-                        <span>6.</span>
-                        <div data-i18n="term5"><strong>Punctuality:</strong> Passengers must be ready 10 minutes prior to pickup time. Drivers will not speed or rush to avoid safety hazards.</div>
-                    </li>
-                    <li>
-                        <span>7.</span>
-                        <div data-i18n="term6"><strong>Tolls & Parking:</strong> Toll fees and additional parking charges are fully borne by the passenger if applicable.</div>
-                    </li>
-                </ul>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" onclick="acceptTermsAndProceed()" data-i18n="acceptTerms">I Understand & Agree</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- NAVBAR -->
-    <nav>
-        <div class="container nav-content">
-            <button class="brand-logo-btn" onclick="openDriverModal()">
-                🚗 Sisway UniCar
-            </button>
-            <div class="nav-actions">
-                <button class="car-badge-btn" onclick="openCarModal()">
-                    Perodua Bezza 1.3 X
+        <!-- NAVBAR -->
+        <nav>
+            <div class="container nav-content">
+                <button class="brand-logo-btn" onclick="openDriverModal()">
+                    🚗 <span>Sisway UniCar</span>
                 </button>
-                <button class="lang-btn" onclick="toggleLanguage()" id="langToggleBtn">🇲🇾 BM</button>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container" style="margin-top: 16px;">
-
-        <!-- FIRST MAIN PAGE: WELCOME CARD & LET'S BOOKING BUTTON ONLY -->
-        <div id="page-main" class="page active">
-            <div class="welcome-box">
-                <div class="welcome-title" data-i18n="welcomeTitle">👋 Welcome to Sisway UniCar!</div>
-                <div class="welcome-desc" data-i18n="welcomeDesc">
-                    Student-friendly Grab/e-hailing booking system. Enjoy safe, comfortable, and affordable rides designed specifically for campus students & the Northern Region!
+                <div class="nav-actions">
+                    <button class="car-badge-btn" onclick="openCarModal()">
+                        Perodua Bezza 1.3 X
+                    </button>
+                    <button class="lang-btn" onclick="toggleLanguage()" id="langToggleBtn">🇲🇾 BM</button>
                 </div>
-                <button class="btn btn-primary" onclick="openTermsModal()" style="font-size: 1.1rem; padding: 16px;" data-i18n="letsBookingBtn">
-                    🚀 Let's Booking!!!
-                </button>
             </div>
-        </div>
+        </nav>
 
+        <div class="container" style="margin-top: 16px;">
 
-        <!-- PAGE 2: SELECT REGION / STATE (SHOWN AFTER TERMS ACCEPTED) -->
-        <div id="page-location" class="page">
-            <div class="hero">
-                <h1 data-i18n="selectRegionTitle">Select Region / State</h1>
-                <p data-i18n="selectRegionDesc">Our e-hailing service exclusively covers the Northern Region.</p>
+            <!-- FIRST MAIN PAGE -->
+            <div id="page-main" class="page active">
+                <div class="welcome-box">
+                    <div class="welcome-title" data-i18n="welcomeTitle">👋 Welcome to Sisway UniCar!</div>
+                    <div class="welcome-desc" data-i18n="welcomeDesc">
+                        Student-friendly Grab/e-hailing booking system. Enjoy safe, comfortable, and affordable rides designed specifically for campus students & the Northern Region!
+                    </div>
+                    <button class="btn btn-primary" onclick="openTermsModal()" style="font-size: 1.1rem; padding: 16px; max-width: 320px;" data-i18n="letsBookingBtn">
+                        🚀 Let's Booking!!!
+                    </button>
+                </div>
             </div>
 
-            <div class="location-grid">
-                <!-- PERLIS -->
-                <div class="location-card" onclick="selectLocationState('perlis')">
-                    <div class="location-info">
-                        <span class="location-icon">📍</span>
-                        <div>
-                            <div class="location-title">Perlis</div>
-                            <div class="location-sub">UniMAP • UiTM • Politeknik • IPG & Others</div>
+            <!-- PAGE 2: SELECT REGION / STATE -->
+            <div id="page-location" class="page">
+                <div class="hero">
+                    <h1 data-i18n="selectRegionTitle">Select Region / State</h1>
+                    <p data-i18n="selectRegionDesc">Our e-hailing service exclusively covers the Northern Region.</p>
+                </div>
+
+                <div class="location-grid">
+                    <!-- PERLIS -->
+                    <div class="location-card" onclick="selectLocationState('perlis')">
+                        <div class="location-info">
+                            <span class="location-icon">📍</span>
+                            <div>
+                                <div class="location-title">Perlis</div>
+                                <div class="location-sub">UniMAP • UiTM • Politeknik • IPG & Others</div>
+                            </div>
                         </div>
+                        <span style="color: var(--accent-bright-blue); font-size: 1.2rem;">➔</span>
                     </div>
-                    <span style="color: var(--accent-blue); font-size: 1.2rem;">➔</span>
-                </div>
 
-                <!-- KEDAH & PENANG (COMBINED) -->
-                <div class="location-card" onclick="selectLocationState('other')">
-                    <div class="location-info">
-                        <span class="location-icon">🌉</span>
-                        <div>
-                            <div class="location-title">Kedah / Penang</div>
-                            <div class="location-sub">Alor Setar • Sintok (UUM) • Airport (AOR/PEN) • Georgetown</div>
+                    <!-- KEDAH & PENANG -->
+                    <div class="location-card" onclick="selectLocationState('other')">
+                        <div class="location-info">
+                            <span class="location-icon">🌉</span>
+                            <div>
+                                <div class="location-title">Kedah / Penang</div>
+                                <div class="location-sub">Alor Setar • Sintok (UUM) • Airport (AOR/PEN) • Georgetown</div>
+                            </div>
                         </div>
+                        <span style="color: var(--accent-bright-blue); font-size: 1.2rem;">➔</span>
                     </div>
-                    <span style="color: var(--accent-blue); font-size: 1.2rem;">➔</span>
+                </div>
+
+                <button class="btn btn-secondary" onclick="openTermsModal()" style="margin-top: 20px;" data-i18n="readTermsBtn">📜 Read Terms & Conditions Again</button>
+            </div>
+
+            <!-- PAGE 3: MAIN HOME -->
+            <div id="page-home" class="page">
+                <div class="hero">
+                    <h1>🚗 Sisway UniCar</h1>
+                    <p data-i18n="heroSub">Affordable for students, comfortable for every trip.</p>
+                    <div class="hero-btns">
+                        <button class="btn btn-primary" onclick="goToPage('page-booking')" data-i18n="bookNowBtn">Book Now</button>
+                        <button class="btn btn-secondary" onclick="goToPage('page-pricing')" data-i18n="viewPricingBtn">View Pricing</button>
+                    </div>
+                </div>
+
+                <h2 class="section-title" data-i18n="whyChooseTitle">🌟 Why Choose Us?</h2>
+                <div class="grid-2">
+                    <div class="card feature-card">
+                        <span class="feature-icon">💰</span>
+                        <span class="feature-title" data-i18n="f1Title">Student Rates</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted);" data-i18n="f1Sub">Budget-friendly pricing</span>
+                    </div>
+                    <div class="card feature-card">
+                        <span class="feature-icon">👥</span>
+                        <span class="feature-title" data-i18n="f2Title">Share Ride</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted);" data-i18n="f2Sub">Split fare 1-4 pax</span>
+                    </div>
+                    <div class="card feature-card">
+                        <span class="feature-icon">🧼</span>
+                        <span class="feature-title" data-i18n="f3Title">Clean Vehicle</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted);" data-i18n="f3Sub">Tidy & fresh interior</span>
+                    </div>
+                    <div class="card feature-card">
+                        <span class="feature-icon">❄️</span>
+                        <span class="feature-title" data-i18n="f4Title">Cool Aircond</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted);" data-i18n="f4Sub">Comfortable journey</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary" onclick="goToPage('page-location')" style="margin-top: 10px;" data-i18n="changeRegionBtn">⬅️ Change Main Region</button>
+            </div>
+
+            <!-- PAGE 4: STANDARD BOOKING FORM (PERLIS) -->
+            <div id="page-booking" class="page">
+                <h2 class="section-title" data-i18n="bookingTitle">📝 Book a Ride (Perlis)</h2>
+                <div class="card">
+                    <form id="bookingForm">
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label data-i18n="fullNameLabel">Full Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="e.g., Alex Johnson" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label data-i18n="phoneLabel">Phone Number (WhatsApp)</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="e.g., 0123456789" required>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label data-i18n="selectInstLabel">Select Campus / Institution</label>
+                                <select id="university" class="form-control" required>
+                                    <option value="" data-i18n="optInstDefault">-- Select Institution --</option>
+                                    <option value="UniMAP">1. UniMAP</option>
+                                    <option value="UiTM">2. UiTM</option>
+                                    <option value="Politeknik">3. Politeknik</option>
+                                    <option value="LAIN_LAIN" data-i18n="optInstOthers">4. Others (Specify)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="customInstGroup" style="display: none;">
+                                <label data-i18n="specifyInstLabel">Specify Campus / Pickup Name</label>
+                                <input type="text" id="customInstitute" class="form-control" placeholder="e.g., Kolej Matrikulasi Perlis / IPG Kangar">
+                            </div>
+
+                            <div class="form-group" id="pickupSelectGroup">
+                                <label data-i18n="specificPickupLabel">Specific Pickup Location</label>
+                                <select id="pickup" class="form-control" disabled>
+                                    <option value="" data-i18n="optPickupDefault">-- Select Institution First --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label data-i18n="destLabel">Destination</label>
+                                <select id="destination" class="form-control" required>
+                                    <option value="" data-i18n="optDestDefault">-- Select Destination --</option>
+                                    <option value="SEKITAR_PAUH" data-i18n="d1">Pauh Area / Campus Zone</option>
+                                    <option value="ARAU">Arau</option>
+                                    <option value="KANGAR">Kangar</option>
+                                    <option value="KUALA_PERLIS">Kuala Perlis</option>
+                                    <option value="PADANG_BESAR">Padang Besar</option>
+                                    <option value="ALOR_SETAR_AIRPORT">Alor Setar Airport (AOR)</option>
+                                    <option value="PENANG_AIRPORT">Penang Airport (PEN)</option>
+                                    <option value="OTHER" data-i18n="dOther">Other Destinations (Nego Rate)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="customDestGroup" style="display: none;">
+                                <label data-i18n="specifyDestLabel">Specify Your Destination</label>
+                                <input type="text" id="customDestination" class="form-control" placeholder="e.g., Jitra / Sungai Petani">
+                            </div>
+
+                            <div class="form-group">
+                                <label data-i18n="paxLabel">Number of Passengers (Pax)</label>
+                                <select id="pax" class="form-control" required>
+                                    <option value="1">1 Pax</option>
+                                    <option value="2">2 Pax</option>
+                                    <option value="3">3 Pax</option>
+                                    <option value="4">4 Pax (Max)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label data-i18n="dateLabel">Date</label>
+                                <input type="date" id="date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="timeLabel">Pickup Time</label>
+                                <input type="time" id="time" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="fare-box" id="fareBox">
+                            <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;" data-i18n="estFareLabel">Estimated Fare</div>
+                            <div class="fare-amount" id="displayTotalFare">RM0</div>
+                            <div class="fare-per-person" id="displayPerPersonFare" data-i18n="fareHint">Select destination & pax</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="bookingSubmitBtn" data-i18n="proceedBtn">Proceed to Booking</button>
+                        <button type="button" class="btn btn-secondary" onclick="goToPage('page-home')" style="margin-top: 10px;" data-i18n="backBtn">Back</button>
+                    </form>
                 </div>
             </div>
 
-            <button class="btn btn-secondary" onclick="openTermsModal()" style="margin-top: 20px;" data-i18n="readTermsBtn">📜 Read Terms & Conditions Again</button>
-        </div>
+            <!-- PAGE 5: KEDAH & PENANG FORM -->
+            <div id="page-other-state" class="page">
+                <h2 class="section-title" data-i18n="ngoTitle">🛣️ Northern Region Trip (Nego Rate)</h2>
+                <div class="card">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;" data-i18n="ngoDesc">
+                        For pickups or destinations across Kedah or Penang, rates are negotiable (Nego Rate) to stay student-friendly.
+                    </p>
 
+                    <form id="otherStateForm">
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label data-i18n="fullNameLabel">Full Name</label>
+                                <input type="text" id="osName" class="form-control" placeholder="e.g., Alex Johnson" required>
+                            </div>
 
-        <!-- PAGE 3: MAIN HOME & BOOKING OPTIONS -->
-        <div id="page-home" class="page">
-            <div class="hero">
-                <h1>🚗 Sisway UniCar</h1>
-                <p data-i18n="heroSub">Affordable for students, comfortable for every trip.</p>
-                <div class="hero-btns">
-                    <button class="btn btn-primary" onclick="goToPage('page-booking')" data-i18n="bookNowBtn">Book Now</button>
-                    <button class="btn btn-secondary" onclick="goToPage('page-pricing')" data-i18n="viewPricingBtn">View Pricing</button>
-                </div>
-            </div>
+                            <div class="form-group">
+                                <label data-i18n="phoneLabel">Phone Number (WhatsApp)</label>
+                                <input type="tel" id="osPhone" class="form-control" placeholder="e.g., 0123456789" required>
+                            </div>
+                        </div>
 
-            <h2 class="section-title" data-i18n="whyChooseTitle">🌟 Why Choose Us?</h2>
-            <div class="grid-2">
-                <div class="card feature-card">
-                    <span class="feature-icon">💰</span>
-                    <span class="feature-title" data-i18n="f1Title">Student Rates</span>
-                    <span style="font-size: 0.72rem; color: var(--text-muted);" data-i18n="f1Sub">Budget-friendly pricing</span>
-                </div>
-                <div class="card feature-card">
-                    <span class="feature-icon">👥</span>
-                    <span class="feature-title" data-i18n="f2Title">Share Ride</span>
-                    <span style="font-size: 0.72rem; color: var(--text-muted);" data-i18n="f2Sub">Split fare 1-4 pax</span>
-                </div>
-                <div class="card feature-card">
-                    <span class="feature-icon">🧼</span>
-                    <span class="feature-title" data-i18n="f3Title">Clean Vehicle</span>
-                    <span style="font-size: 0.72rem; color: var(--text-muted);" data-i18n="f3Sub">Tidy & fresh interior</span>
-                </div>
-                <div class="card feature-card">
-                    <span class="feature-icon">❄️</span>
-                    <span class="feature-title" data-i18n="f4Title">Cool Aircond</span>
-                    <span style="font-size: 0.72rem; color: var(--text-muted);" data-i18n="f4Sub">Comfortable journey</span>
-                </div>
-            </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label data-i18n="specificPickupLabel">Specific Pickup Location</label>
+                                <input type="text" id="osPickup" class="form-control" placeholder="e.g., UUM Sintok / Changlun / Penang Airport" required>
+                            </div>
 
-            <button class="btn btn-secondary" onclick="goToPage('page-location')" style="margin-top: 10px;" data-i18n="changeRegionBtn">⬅️ Change Main Region</button>
-        </div>
+                            <div class="form-group">
+                                <label data-i18n="destLabel">Destination</label>
+                                <input type="text" id="osDest" class="form-control" placeholder="e.g., Pauh / Arau / Alor Setar" required>
+                            </div>
+                        </div>
 
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label data-i18n="dateLabel">Date</label>
+                                <input type="date" id="osDate" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="timeLabel">Pickup Time</label>
+                                <input type="time" id="osTime" class="form-control" required>
+                            </div>
+                        </div>
 
-        <!-- PAGE 4: STANDARD BOOKING FORM (PERLIS) -->
-        <div id="page-booking" class="page">
-            <h2 class="section-title" data-i18n="bookingTitle">📝 Book a Ride (Perlis)</h2>
-            <div class="card">
-                <form id="bookingForm">
-                    <div class="form-group">
-                        <label data-i18n="fullNameLabel">Full Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="e.g., Alex Johnson" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="phoneLabel">Phone Number (WhatsApp)</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="e.g., 0123456789" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="selectInstLabel">Select Campus / Institution</label>
-                        <select id="university" class="form-control" required>
-                            <option value="" data-i18n="optInstDefault">-- Select Institution --</option>
-                            <option value="UniMAP">1. UniMAP</option>
-                            <option value="UiTM">2. UiTM</option>
-                            <option value="Politeknik">3. Politeknik</option>
-                            <option value="LAIN_LAIN" data-i18n="optInstOthers">4. Others (Specify)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group" id="customInstGroup" style="display: none;">
-                        <label data-i18n="specifyInstLabel">Specify Campus / Pickup Name</label>
-                        <input type="text" id="customInstitute" class="form-control" placeholder="e.g., Kolej Matrikulasi Perlis / IPG Kangar">
-                    </div>
-
-                    <div class="form-group" id="pickupSelectGroup">
-                        <label data-i18n="specificPickupLabel">Specific Pickup Location</label>
-                        <select id="pickup" class="form-control" disabled>
-                            <option value="" data-i18n="optPickupDefault">-- Select Institution First --</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="destLabel">Destination</label>
-                        <select id="destination" class="form-control" required>
-                            <option value="" data-i18n="optDestDefault">-- Select Destination --</option>
-                            <option value="SEKITAR_PAUH" data-i18n="d1">Pauh Area / Campus Zone</option>
-                            <option value="ARAU">Arau</option>
-                            <option value="KANGAR">Kangar</option>
-                            <option value="KUALA_PERLIS">Kuala Perlis</option>
-                            <option value="PADANG_BESAR">Padang Besar</option>
-                            <option value="ALOR_SETAR_AIRPORT">Alor Setar Airport (AOR)</option>
-                            <option value="PENANG_AIRPORT">Penang Airport (PEN)</option>
-                            <option value="OTHER" data-i18n="dOther">Other Destinations (Nego Rate)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group" id="customDestGroup" style="display: none;">
-                        <label data-i18n="specifyDestLabel">Specify Your Destination</label>
-                        <input type="text" id="customDestination" class="form-control" placeholder="e.g., Jitra / Sungai Petani">
-                    </div>
-
-                    <div class="grid-2">
                         <div class="form-group">
-                            <label data-i18n="dateLabel">Date</label>
-                            <input type="date" id="date" class="form-control" required>
+                            <label data-i18n="paxLabel">Number of Passengers (Pax)</label>
+                            <select id="osPax" class="form-control" required>
+                                <option value="1">1 Pax</option>
+                                <option value="2">2 Pax</option>
+                                <option value="3">3 Pax</option>
+                                <option value="4">4 Pax (Max)</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label data-i18n="timeLabel">Pickup Time</label>
-                            <input type="time" id="time" class="form-control" required>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label data-i18n="paxLabel">Number of Passengers (Pax)</label>
-                        <select id="pax" class="form-control" required>
-                            <option value="1">1 Pax</option>
-                            <option value="2">2 Pax</option>
-                            <option value="3">3 Pax</option>
-                            <option value="4">4 Pax (Max)</option>
-                        </select>
-                    </div>
-
-                    <div class="fare-box" id="fareBox">
-                        <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;" data-i18n="estFareLabel">Estimated Fare</div>
-                        <div class="fare-amount" id="displayTotalFare">RM0</div>
-                        <div class="fare-per-person" id="displayPerPersonFare" data-i18n="fareHint">Select destination & pax</div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" id="bookingSubmitBtn" data-i18n="proceedBtn">Proceed to Booking</button>
-                    <button type="button" class="btn btn-secondary" onclick="goToPage('page-home')" style="margin-top: 10px;" data-i18n="backBtn">Back</button>
-                </form>
-            </div>
-        </div>
-
-
-        <!-- PAGE 5: KEDAH & PENANG (NORTHERN NEGO FORM) -->
-        <div id="page-other-state" class="page">
-            <h2 class="section-title" data-i18n="ngoTitle">🛣️ Northern Region Trip (Nego Rate)</h2>
-            <div class="card">
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;" data-i18n="ngoDesc">
-                    For pickups or destinations across Kedah or Penang, rates are negotiable (Nego Rate) to stay student-friendly.
-                </p>
-
-                <form id="otherStateForm">
-                    <div class="form-group">
-                        <label data-i18n="fullNameLabel">Full Name</label>
-                        <input type="text" id="osName" class="form-control" placeholder="e.g., Alex Johnson" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="phoneLabel">Phone Number (WhatsApp)</label>
-                        <input type="tel" id="osPhone" class="form-control" placeholder="e.g., 0123456789" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="specificPickupLabel">Specific Pickup Location</label>
-                        <input type="text" id="osPickup" class="form-control" placeholder="e.g., UUM Sintok / Changlun / Penang Airport" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="destLabel">Destination</label>
-                        <input type="text" id="osDest" class="form-control" placeholder="e.g., Pauh / Arau / Alor Setar" required>
-                    </div>
-
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label data-i18n="dateLabel">Date</label>
-                            <input type="date" id="osDate" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label data-i18n="timeLabel">Pickup Time</label>
-                            <input type="time" id="osTime" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="paxLabel">Number of Passengers (Pax)</label>
-                        <select id="osPax" class="form-control" required>
-                            <option value="1">1 Pax</option>
-                            <option value="2">2 Pax</option>
-                            <option value="3">3 Pax</option>
-                            <option value="4">4 Pax (Max)</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" data-i18n="getQuoteBtn">Get Quote via WhatsApp</button>
-                    <button type="button" class="btn btn-secondary" onclick="goToPage('page-location')" style="margin-top: 10px;" data-i18n="changeRegionBtn">⬅️ Change Region</button>
-                </form>
-            </div>
-        </div>
-
-
-        <!-- PAGE 6: CONFIRMATION & RECEIPT PAGE -->
-        <div id="page-receipt" class="page">
-            <h2 class="section-title" data-i18n="summaryTitle">✅ Booking Summary</h2>
-            <div class="card receipt-card">
-                <div class="receipt-row"><span class="receipt-label" data-i18n="rBookingId">Booking ID:</span><span class="receipt-val" id="rId">-</span></div>
-                <div class="receipt-row"><span class="receipt-label" data-i18n="rName">Name:</span><span class="receipt-val" id="rName">-</span></div>
-                <div class="receipt-row"><span class="receipt-label" data-i18n="rPhone">Phone:</span><span class="receipt-val" id="rPhone">-</span></div>
-                <div class="receipt-row"><span class="receipt-label" data-i18n="rPickup">Pickup Location:</span><span class="receipt-val" id="rPickup">-</span></div>
-                <div class="receipt-row"><span class="receipt-label" data-i18n="rDest">Destination:</span><span class="receipt-val" id="rDest">-</span></div>
-                <div class="receipt-row"><span class="receipt-label" data-i18n="rDateTime">Date & Time:</span><span class="receipt-val" id="rDateTime">-</span></div>
-                <div class="receipt-row"><span class="receipt-label" data-i18n="rPax">Passengers:</span><span class="receipt-val" id="rPax">-</span></div>
-                <div class="receipt-row" style="margin-top: 8px; font-size: 1.1rem;">
-                    <span class="receipt-label" style="color: var(--accent-blue);" data-i18n="rFare">Total Fare:</span>
-                    <span class="receipt-val" id="rFare" style="color: var(--accent-blue); font-weight: 800;">-</span>
-                </div>
-
-                <a id="whatsappBtn" href="#" target="_blank" class="btn btn-whatsapp" data-i18n="confirmWaBtn">
-                    📲 Confirm Booking via WhatsApp
-                </a>
-            </div>
-
-            <button class="btn btn-secondary" onclick="goToPage('page-home')" style="margin-top: 10px;" data-i18n="returnHomeBtn">Return to Home</button>
-        </div>
-
-
-        <!-- PAGE 7: PRICING TABLE PAGE -->
-        <div id="page-pricing" class="page">
-            <h2 class="section-title" data-i18n="pricingRatesTitle">🏷️ Student-Friendly Rates</h2>
-            <div class="card">
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;" data-i18n="pricingTip">
-                    💡 <strong>More passengers = Cheaper per person!</strong> Split fares easily with friends.
-                </p>
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="thDest">Destination</th>
-                            <th>1–2 Pax</th>
-                            <th>3–4 Pax</th>
-                        </tr>
-                    </thead>
-                    <tbody id="priceTableBody">
-                        <!-- Populated via JS -->
-                    </tbody>
-                </table>
-                <div style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted); text-align: center;" data-i18n="ngoNote">
-                    * Other destinations: <strong>Nego Rate (Negotiable)</strong>
+                        <button type="submit" class="btn btn-primary" data-i18n="getQuoteBtn">Get Quote via WhatsApp</button>
+                        <button type="button" class="btn btn-secondary" onclick="goToPage('page-location')" style="margin-top: 10px;" data-i18n="changeRegionBtn">⬅️ Change Region</button>
+                    </form>
                 </div>
             </div>
 
-            <button class="btn btn-primary" onclick="goToPage('page-booking')" data-i18n="bookNowBtn">Book Now</button>
-            <button class="btn btn-secondary" onclick="goToPage('page-home')" style="margin-top: 10px;" data-i18n="backBtn">Back</button>
-        </div>
+            <!-- PAGE 6: CONFIRMATION & RECEIPT PAGE -->
+            <div id="page-receipt" class="page">
+                <h2 class="section-title" data-i18n="summaryTitle">✅ Booking Summary</h2>
+                <div class="card receipt-card">
+                    <div class="receipt-row"><span class="receipt-label" data-i18n="rBookingId">Booking ID:</span><span class="receipt-val" id="rId">-</span></div>
+                    <div class="receipt-row"><span class="receipt-label" data-i18n="rName">Name:</span><span class="receipt-val" id="rName">-</span></div>
+                    <div class="receipt-row"><span class="receipt-label" data-i18n="rPhone">Phone:</span><span class="receipt-val" id="rPhone">-</span></div>
+                    <div class="receipt-row"><span class="receipt-label" data-i18n="rPickup">Pickup Location:</span><span class="receipt-val" id="rPickup">-</span></div>
+                    <div class="receipt-row"><span class="receipt-label" data-i18n="rDest">Destination:</span><span class="receipt-val" id="rDest">-</span></div>
+                    <div class="receipt-row"><span class="receipt-label" data-i18n="rDateTime">Date & Time:</span><span class="receipt-val" id="rDateTime">-</span></div>
+                    <div class="receipt-row"><span class="receipt-label" data-i18n="rPax">Passengers:</span><span class="receipt-val" id="rPax">-</span></div>
+                    <div class="receipt-row" style="margin-top: 8px; font-size: 1.1rem;">
+                        <span class="receipt-label" style="color: #ffffff;" data-i18n="rFare">Total Fare:</span>
+                        <span class="receipt-val" id="rFare" style="color: var(--accent-bright-blue); font-weight: 800;">-</span>
+                    </div>
 
-        <!-- FOOTER -->
-        <footer>
-            <p><strong>Sisway UniCar</strong> by Mr.Emon</p>
-            <p data-i18n="footerSub">Perodua Bezza 1.3 X Private Ride Service (Northern Region)</p>
-        </footer>
+                    <a id="whatsappBtn" href="#" target="_blank" class="btn btn-whatsapp" data-i18n="confirmWaBtn">
+                        📲 Confirm Booking via WhatsApp
+                    </a>
+                </div>
+
+                <button class="btn btn-secondary" onclick="goToPage('page-home')" style="margin-top: 10px;" data-i18n="returnHomeBtn">Return to Home</button>
+            </div>
+
+            <!-- PAGE 7: PRICING TABLE PAGE -->
+            <div id="page-pricing" class="page">
+                <h2 class="section-title" data-i18n="pricingRatesTitle">🏷️ Student-Friendly Rates</h2>
+                <div class="card">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;" data-i18n="pricingTip">
+                        💡 <strong>More passengers = Cheaper per person!</strong> Split fares easily with friends.
+                    </p>
+                    <div style="overflow-x: auto;">
+                        <table class="price-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="thDest">Destination</th>
+                                    <th>1–2 Pax</th>
+                                    <th>3–4 Pax</th>
+                                </tr>
+                            </thead>
+                            <tbody id="priceTableBody">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted); text-align: center;" data-i18n="ngoNote">
+                        * Other destinations: <strong>Nego Rate (Negotiable)</strong>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="goToPage('page-booking')" data-i18n="bookNowBtn">Book Now</button>
+                <button class="btn btn-secondary" onclick="goToPage('page-home')" style="margin-top: 10px;" data-i18n="backBtn">Back</button>
+            </div>
+
+        </div>
     </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Sisway UniCar</strong> by Mr.Emon</p>
+        <p data-i18n="footerSub">Perodua Bezza 1.3 X Private Ride Service (Northern Region)</p>
+    </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
@@ -957,7 +1026,6 @@
             DRIVER_NAME: "Mr.Emon",
             CAR_MODEL: "Perodua Bezza 1.3 X",
             WHATSAPP_NUMBER: "60197330795",
-            GOOGLE_SHEET_URL: "https://script.google.com/macros/s/AKfycbyhV77K5QornDIY-lGorVmztLHmBqmE3LQLlprD7pASYgwNPrVRhDBEHZRCnPcy9Ab6/exec",
 
             PICKUP_LOCATIONS: {
                 UniMAP: [
@@ -1192,7 +1260,6 @@
             });
         }
 
-        // DOM ELEMENTS
         const driverInfoModal = document.getElementById('driverInfoModal');
         const carInfoModal = document.getElementById('carInfoModal');
         const termsModal = document.getElementById('termsModal');
@@ -1213,7 +1280,6 @@
         const otherStateForm = document.getElementById('otherStateForm');
         const priceTableBody = document.getElementById('priceTableBody');
 
-        // MODAL HANDLERS
         function openDriverModal() { driverInfoModal.style.display = 'flex'; }
         function closeDriverModal() { driverInfoModal.style.display = 'none'; }
         function openCarModal() { carInfoModal.style.display = 'flex'; }
@@ -1225,7 +1291,6 @@
             goToPage('page-location');
         }
 
-        // PAGE NAVIGATION
         function goToPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.classList.remove('active'));
@@ -1259,7 +1324,6 @@
             }
         }
 
-        // DYNAMIC PICKUP SELECTOR HANDLER
         uniSelect.addEventListener('change', function() {
             const val = this.value;
             pickupSelect.innerHTML = '';
@@ -1336,22 +1400,7 @@
             }
         }
 
-        // FUNCTION TO AUTO-SAVE BOOKING TO GOOGLE SHEET
-        async function autoSaveToGoogleSheet(data) {
-            try {
-                await fetch(CONFIG.GOOGLE_SHEET_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-            } catch (err) {
-                console.error('Auto-save error:', err);
-            }
-        }
-
-        // BOOKING FORM SUBMIT
-        bookingForm.addEventListener('submit', async function(e) {
+        bookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
             const name = document.getElementById('name').value;
@@ -1366,20 +1415,6 @@
             const time = document.getElementById('time').value;
             const pax = paxSelect.value;
             const bookingId = 'UC-' + Math.floor(1000 + Math.random() * 9000);
-
-            // Send booking data to Google Sheet
-            const payload = {
-                bookingId: bookingId,
-                date: `${date} ${time}`,
-                name: name,
-                phone: phone,
-                pickup: pickupLoc,
-                destination: destLoc,
-                pax: pax,
-                fare: (uniVal === 'LAIN_LAIN') ? 'Nego Rate' : totalFareDisplay.textContent,
-                notes: 'Perlis Ride'
-            };
-            autoSaveToGoogleSheet(payload);
 
             if (uniVal === 'LAIN_LAIN') {
                 const quoteMsg = `Hi ${CONFIG.DRIVER_NAME}!\nI would like to request a price quotation (Nego Rate) for *${CONFIG.BUSINESS_NAME}* (Perlis).\n\n` +
@@ -1422,7 +1457,6 @@
             goToPage('page-receipt');
         });
 
-        // OTHER STATE FORM SUBMIT
         otherStateForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -1434,20 +1468,6 @@
             const time = document.getElementById('osTime').value;
             const pax = document.getElementById('osPax').value;
             const bookingId = 'UC-OS-' + Math.floor(1000 + Math.random() * 9000);
-
-            // Send booking data to Google Sheet
-            const payload = {
-                bookingId: bookingId,
-                date: `${date} ${time}`,
-                name: name,
-                phone: phone,
-                pickup: pickupLoc,
-                destination: destLoc,
-                pax: pax,
-                fare: 'Nego Rate',
-                notes: 'Northern Region Trip'
-            };
-            autoSaveToGoogleSheet(payload);
 
             const msg = `Hi ${CONFIG.DRIVER_NAME}!\nI would like to request a price quotation (Nego Rate) for *${CONFIG.BUSINESS_NAME}* (Northern Region).\n\n` +
                         `*Ref ID:* ${bookingId}\n` +
@@ -1462,7 +1482,6 @@
             window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         });
 
-        // INIT
         document.addEventListener('DOMContentLoaded', function() {
             populatePriceTable();
             applyTranslations();
