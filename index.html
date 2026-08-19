@@ -31,17 +31,27 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             background-color: var(--bg-main);
             color: var(--text-white);
             line-height: 1.5;
-            padding-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 500px;
+            width: 100%;
             margin: 0 auto;
-            padding: 0 16px;
+            padding: 0 16px 32px; /* Ditambah ruang bawah supaya tidak berlenggar dengan footer */
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         /* NAVIGATION */
@@ -121,7 +131,10 @@
             animation: fadeIn 0.3s ease-in-out;
         }
         .page.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(6px); }
@@ -493,9 +506,10 @@
             text-align: center;
             font-size: 0.8rem;
             color: var(--text-muted);
-            margin-top: 30px;
-            padding-top: 20px;
+            padding: 20px 16px;
             border-top: 1px solid var(--border-color);
+            margin-top: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -636,7 +650,7 @@
 
     <!-- NAVBAR -->
     <nav>
-        <div class="container nav-content">
+        <div class="container nav-content" style="padding-bottom: 0;">
             <button class="brand-logo-btn" onclick="openDriverModal()">
                 🚗 Sisway UniCar
             </button>
@@ -698,7 +712,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-secondary" onclick="openTermsModal()" style="margin-top: 20px;" data-i18n="readTermsBtn">📜 Read Terms & Conditions Again</button>
+            <button class="btn btn-secondary" onclick="openTermsModal()" style="margin-top: 24px; margin-bottom: 16px;" data-i18n="readTermsBtn">📜 Read Terms & Conditions Again</button>
         </div>
 
 
@@ -737,7 +751,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-secondary" onclick="goToPage('page-location')" style="margin-top: 10px;" data-i18n="changeRegionBtn">⬅️ Change Main Region</button>
+            <button class="btn btn-secondary" onclick="goToPage('page-location')" style="margin-top: 10px; margin-bottom: 16px;" data-i18n="changeRegionBtn">⬅️ Change Main Region</button>
         </div>
 
 
@@ -943,12 +957,13 @@
             <button class="btn btn-secondary" onclick="goToPage('page-home')" style="margin-top: 10px;" data-i18n="backBtn">Back</button>
         </div>
 
-        <!-- FOOTER -->
-        <footer>
-            <p><strong>Sisway UniCar</strong> by Mr.Emon</p>
-            <p data-i18n="footerSub">Perodua Bezza 1.3 X Private Ride Service (Northern Region)</p>
-        </footer>
     </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Sisway UniCar</strong> by Mr.Emon</p>
+        <p data-i18n="footerSub">Perodua Bezza 1.3 X Private Ride Service (Northern Region)</p>
+    </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
