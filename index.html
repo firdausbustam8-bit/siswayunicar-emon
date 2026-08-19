@@ -957,6 +957,7 @@
             DRIVER_NAME: "Mr.Emon",
             CAR_MODEL: "Perodua Bezza 1.3 X",
             WHATSAPP_NUMBER: "60197330795",
+            GOOGLE_SHEET_URL: "https://script.google.com/macros/s/AKfycbyhV77K5QornDIY-lGorVmztLHmBqmE3LQLlprD7pASYgwNPrVRhDBEHZRCnPcy9Ab6/exec",
 
             PICKUP_LOCATIONS: {
                 UniMAP: [
@@ -1335,8 +1336,22 @@
             }
         }
 
+        // FUNCTION TO AUTO-SAVE BOOKING TO GOOGLE SHEET
+        async function autoSaveToGoogleSheet(data) {
+            try {
+                await fetch(CONFIG.GOOGLE_SHEET_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+            } catch (err) {
+                console.error('Auto-save error:', err);
+            }
+        }
+
         // BOOKING FORM SUBMIT
-        bookingForm.addEventListener('submit', function(e) {
+        bookingForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const name = document.getElementById('name').value;
@@ -1351,6 +1366,20 @@
             const time = document.getElementById('time').value;
             const pax = paxSelect.value;
             const bookingId = 'UC-' + Math.floor(1000 + Math.random() * 9000);
+
+            // Send booking data to Google Sheet
+            const payload = {
+                bookingId: bookingId,
+                date: `${date} ${time}`,
+                name: name,
+                phone: phone,
+                pickup: pickupLoc,
+                destination: destLoc,
+                pax: pax,
+                fare: (uniVal === 'LAIN_LAIN') ? 'Nego Rate' : totalFareDisplay.textContent,
+                notes: 'Perlis Ride'
+            };
+            autoSaveToGoogleSheet(payload);
 
             if (uniVal === 'LAIN_LAIN') {
                 const quoteMsg = `Hi ${CONFIG.DRIVER_NAME}!\nI would like to request a price quotation (Nego Rate) for *${CONFIG.BUSINESS_NAME}* (Perlis).\n\n` +
@@ -1405,6 +1434,20 @@
             const time = document.getElementById('osTime').value;
             const pax = document.getElementById('osPax').value;
             const bookingId = 'UC-OS-' + Math.floor(1000 + Math.random() * 9000);
+
+            // Send booking data to Google Sheet
+            const payload = {
+                bookingId: bookingId,
+                date: `${date} ${time}`,
+                name: name,
+                phone: phone,
+                pickup: pickupLoc,
+                destination: destLoc,
+                pax: pax,
+                fare: 'Nego Rate',
+                notes: 'Northern Region Trip'
+            };
+            autoSaveToGoogleSheet(payload);
 
             const msg = `Hi ${CONFIG.DRIVER_NAME}!\nI would like to request a price quotation (Nego Rate) for *${CONFIG.BUSINESS_NAME}* (Northern Region).\n\n` +
                         `*Ref ID:* ${bookingId}\n` +
